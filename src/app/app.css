@@ -1,0 +1,46 @@
+/* Yleinen summaboksi */
+.summary {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  gap: 2em;
+  font-weight: bold;
+  flex-wrap: wrap; /* responsiivisuus */
+}
+
+.summary .income { color: green; }
+.summary .expense { color: red; }
+.summary .balance { color: black; }
+
+/* Transaktiolista */
+.transaction-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-list li {
+  padding: 0.5em;
+  margin: 0.2em 0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover-efekti riville */
+.transaction-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Taustavärit tuloille ja menoille */
+.transaction-list li.income { background-color: #e0ffe0; }
+.transaction-list li.expense { background-color: #ffe0e0; }
+
+/* Poistopainike */ 
+.transaction-list button {
+  margin-left: 1em;
+}

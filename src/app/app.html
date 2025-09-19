@@ -2,11 +2,23 @@
 
 <app-transaction-form (transactionAdded)="onTransactionAdded($event)"></app-transaction-form>
 
+<!-- Dashboard -->
+<div class="summary">
+  <div class="income">Tulot: {{ income | currency:'EUR':'symbol':'1.2-2' }}</div>
+  <div class="expense">Menot: {{ expense | currency:'EUR':'symbol':'1.2-2' }}</div>
+  <div class="balance" [ngClass]="{ 'negative': balance < 0 }">Saldo: {{ balance | currency:'EUR':'symbol':'1.2-2' }}</div>
+</div>
+
+<!-- Pylväsdiagrammi tulot/menot -->
+<app-summary-chart [income]="income" [expense]="expense"></app-summary-chart>
+
+<!-- Lista transaktioista -->
 <div class="transaction-list">
   <h2>Transactions</h2>
   <ul>
-    <li *ngFor="let tx of transactions">
-      {{ tx.date | date }} - {{ tx.description }} - {{ tx.amount | currency }}
+    <li *ngFor="let tx of transactions" [ngClass]="tx.type">
+      {{ tx.date | date:'mediumDate' }} - {{ tx.description }} - {{ tx.amount | currency:'EUR':'symbol':'1.2-2':'fi-FI' }}
+      <button (click)="deleteTransaction(tx.id!)">Poista</button>
     </li>
   </ul>
 </div>
