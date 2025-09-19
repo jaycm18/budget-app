@@ -1,0 +1,21 @@
+<form (ngSubmit)="addTransaction()">
+  <label>
+    Type:
+    <select [(ngModel)]="type" name="type">
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+  </label>
+
+  <label>
+    Description:
+    <input type="text" [(ngModel)]="description" name="description" required />
+  </label>
+
+  <label>
+    Amount:
+    <input type="number" [(ngModel)]="amount" name="amount" required min="0.01" step="0.01" />
+  </label>
+
+  <button type="submit">Add Transaction</button>
+</form>
